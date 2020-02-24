@@ -9,7 +9,7 @@ const messageRows = document.getElementById('messageRows');
     try {
       const messages = await getMessagesAsync();
       displayMessages(messages);
-      //console.log(products);
+      //console.log(messages);
   
     } // catch and log any errors
     catch (err) {
