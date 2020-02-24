@@ -1,7 +1,4 @@
 
-// name of the the Firebase collection to be used
-const FB_COLLECTION = "messages";
-
 // page element where rows will be inserted 
 const messageRows = document.getElementById('messageRows');
 
@@ -9,7 +6,7 @@ const messageRows = document.getElementById('messageRows');
 // Async call
   async function getMessages() {
     try {
-      const messages = await getMessagesAsync(FB_COLLECTION);
+      const messages = await getMessagesAsync();
       displayMessages(messages);
       //console.log(messages);
   
@@ -61,7 +58,7 @@ async function deleteMessage(id) {
   if (confirm("Are you sure?")) {
 
     try {
-      result = await deleteMessageByIdAsync(FB_COLLECTION, id);
+      result = await deleteMessageByIdAsync(id);
 
     } // catch and log any errors
     catch (err) {

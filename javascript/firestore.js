@@ -11,6 +11,8 @@ var firebaseConfig = {
     measurementId: ""
 };
 
+// name of the the Firebase collection to be used
+const FB_COLLECTION = "messages";
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
@@ -22,14 +24,14 @@ let database = firebase.firestore();
 /*
     Get all messages
 */
-async function getMessagesAsync(fb_collection) {
+async function getMessagesAsync(FB_COLLECTION) {
     // Declare empty array
     let messages = [];
   
     // await calls must be made in try-catch blocks
     try {
       // Get a snapshot of the products collection
-      let snapshot = await database.collection(fb_collection).get();
+      let snapshot = await database.collection(FB_COLLECTION).get();
   
       // use map() to retrieve product document objects from the snapshot - storing each in the array
       // map returns each document from the firestore snapshot
@@ -48,14 +50,14 @@ async function getMessagesAsync(fb_collection) {
 /*
     Get single message by id from a firebase collection
 */
-async function getMessageByIdAsync(fb_collection, id) {
+async function getMessageByIdAsync(FB_COLLECTION, id) {
     // Declare empty product
     let message;
   
     // await calls must be made in try-catch blocks
     try {
       // Get product document which matches id
-      product = await database.doc(`${fb_collection}/${id}`).get();
+      product = await database.doc(`${FB_COLLECTION}/${id}`).get();
   
     } catch (err) {
       // catch errors
