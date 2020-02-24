@@ -11,7 +11,7 @@ var firebaseConfig = {
     measurementId: ""
 };
 
-// The Firebase collection to be used
+// name of the the Firebase collection to be used
 const FB_COLLECTION = "messages";
 
 // Initialize Firebase
