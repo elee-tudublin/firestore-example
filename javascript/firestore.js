@@ -24,7 +24,7 @@ let database = firebase.firestore();
 /*
     Get all messages
 */
-async function getMessagesAsync(FB_COLLECTION) {
+async function getMessagesAsync() {
     // Declare empty array
     let messages = [];
   
@@ -50,7 +50,7 @@ async function getMessagesAsync(FB_COLLECTION) {
 /*
     Get single message by id from a firebase collection
 */
-async function getMessageByIdAsync(FB_COLLECTION, id) {
+async function getMessageByIdAsync(id) {
     // Declare empty product
     let message;
   
@@ -72,12 +72,12 @@ async function getMessageByIdAsync(FB_COLLECTION, id) {
   /*
     Delete single message by id from a firebase collection
 */
-async function deleteMessageByIdAsync(fb_collection, id) {
+async function deleteMessageByIdAsync(id) {
   
     // await calls must be made in try-catch blocks
     try {
       // Get product document which matches id
-      await database.doc(`${fb_collection}/${id}`).delete();
+      await database.doc(`${FB_COLLECTION}/${id}`).delete();
       return true;
   
     } catch (err) {
