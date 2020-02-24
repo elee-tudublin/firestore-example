@@ -1,13 +1,15 @@
 
+// name of the the Firebase collection to be used
+const FB_COLLECTION = "messages";
 
-// page element where data will be inserted 
+// page element where rows will be inserted 
 const messageRows = document.getElementById('messageRows');
 
 // Get JSON array of messages
 // Async call
   async function getMessages() {
     try {
-      const messages = await getMessagesAsync();
+      const messages = await getMessagesAsync(FB_COLLECTION);
       displayMessages(messages);
       //console.log(messages);
   
@@ -59,7 +61,7 @@ async function deleteMessage(id) {
   if (confirm("Are you sure?")) {
 
     try {
-      result = await deleteMessageByIdAsync(id);
+      result = await deleteMessageByIdAsync(FB_COLLECTION, id);
 
     } // catch and log any errors
     catch (err) {
