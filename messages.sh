@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# we can use a local mosquitto broker OR a web based one (local commented out below)
+# for this simple example we use a local mosquitto broker
 # the while will stay in the subscribe loop and act on any messages rxed
 #
 #vars
@@ -8,7 +8,7 @@
 # Firebase Vars - from app settings
 PROJECT_ID='y2proj-messaging'
 COLLECTION_ID='messages'
-API_KEY=''
+API_KEY='AIzaSyB-2gGJgQErbyOiipXGq3CgoLgB4DUgSsE'
 TOKEN=''
 
 # Firestore rules to allow read/write
@@ -27,8 +27,11 @@ REQ_HEADER='content-type: application/json'
 AUTH_HEADER="Authorization: Bearer $TOKEN"
 # Saving data to API via POST request 
 REQ_METHOD='POST'
-# mosquitto_sub -v -h localhost -t myapp/# | while read line
-mosquitto_sub -v -h broker.hivemq.com -t tudmyapp/# | while read line
+
+#
+# do the mosq subscribe and loop around handling any inputs that come in
+#
+mosquitto_sub -v -h localhost -t myapp/# | while read line
 do
         # first all we do is echo the line (topic + message) to the screen
         echo $line
@@ -39,7 +42,12 @@ do
         echo $column1
         column2=`echo $line|cut -f3 -d/`
         echo $column2
+
+	# column will contain the last part of the topic and the entire message
+	# so we parse out the msg and the actual col3 last part of the topic
         column3=`echo $line|cut -f4 -d/`
+        msg=`echo $column3|cut -f2- -d' '`
+        column3=`echo $column3|cut -f1 -d' '`
         echo $column3
 
         # now we work on the message
@@ -58,8 +66,11 @@ do
         # generate date stamp
         now=`date`
         # Data to be sent in JSON format
-        JSON='{"fields": {"createdAt": {"stringValue": "'"$now"'"}, "sender": {"stringValue": "'"$column4"'"}, "recipient": {"stringValue": "'"$column5"'"}, "message": {"stringValue": "'"$column6"'"}}}'
-        
+        JSON='{"fields": {"createdAt": {"stringValue": "'"$now"'"}, "sender": {"stringValue": "'"$column4"'"},
+          "recipient": {"stringValue": "'"$column5"'"}, "message": {"stringValue": "'"$column6"'"}}}'
+
+        # some Debug output next
+        echo $JSON
         # https://askubuntu.com/questions/1162945/how-to-send-json-as-variable-with-bash-curl
 
         # Use CURL to send POST request + data
@@ -69,10 +80,10 @@ do
         echo $response
 done
 
-# test
+# to test
 
 # this script
-# ./messages.sh tudmyapp/col1/col2/col3/ -m col4,col5,col6
+# ./messages.sh 
 
-# pub
-# mosquitto_pub -h broker.hivemq.com -t tudmyapp/col1/col2/col3/ -m test1,test2,test3
+# to publish
+# mosquitto_pub -h localhost -t tudmyapp/col1/col2/col3/ -m test1,test2,test3
