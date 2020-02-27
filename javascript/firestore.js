@@ -2,10 +2,10 @@
 // Your web app's Firebase configuration
 var firebaseConfig = {
   apiKey: "",
-  authDomain: ".firebaseapp.com",
-  databaseURL: "https:// .firebaseio.com",
+  authDomain: "",
+  databaseURL: "",
   projectId: "",
-  storageBucket: ".appspot.com",
+  storageBucket: "",
   messagingSenderId: "",
   appId: "" //,
   
