@@ -1,14 +1,16 @@
 
 // Your web app's Firebase configuration
 var firebaseConfig = {
-    apiKey: "",
-    authDomain: "",
-    databaseURL: "",
-    projectId: "",
-    storageBucket: "",
-    messagingSenderId: "",
-    appId: "",
-    measurementId: ""
+  apiKey: "",
+  authDomain: ".firebaseapp.com",
+  databaseURL: "https:// .firebaseio.com",
+  projectId: "",
+  storageBucket: ".appspot.com",
+  messagingSenderId: "",
+  appId: "" //,
+  
+  // Use for Google analytics
+  //measurementId: ""
 };
 
 // name of the the Firebase collection to be used
@@ -16,7 +18,9 @@ const FB_COLLECTION = "messages";
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-firebase.analytics();
+
+// Uncomment if using google analytics
+// firebase.analytics();
 
 // Get a reference to the database service
 let database = firebase.firestore();

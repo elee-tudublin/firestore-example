@@ -38,16 +38,10 @@ async function displayMessages(messages) {
       </tr>`;
   });
 
+  // Insert the rows into the table body 
+  // join() Convert tableRows array to a string
+  // join('') replaces the default , seperator with blank
   messageRows.innerHTML = tableRows.join('');
-
-  // 1. Get array of buttons
-  let  delButtons = messageRows.getElementsByTagName("button");
-
-  // 2. Assign a 'click' event listener to each button
-  // the calaculate function will be called when a button is clicked
-  for (let i = 0; i < delButtons.length; i++) {
-    delButtons[i].addEventListener("click", deleteMessage);
-  }
 }
 
 
