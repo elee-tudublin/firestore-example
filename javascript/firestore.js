@@ -12,7 +12,7 @@ var firebaseConfig = {
 };
 
 // name of the the Firebase collection to be used
-const FB_COLLECTION = "messages";
+const COLLECTION_ID = "messages";
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
@@ -31,7 +31,7 @@ async function getMessagesAsync() {
     // await calls must be made in try-catch blocks
     try {
       // Get a snapshot of the products collection
-      let snapshot = await database.collection(FB_COLLECTION).get();
+      let snapshot = await database.collection(COLLECTION_ID).get();
   
       // use map() to retrieve product document objects from the snapshot - storing each in the array
       // map returns each document from the firestore snapshot
