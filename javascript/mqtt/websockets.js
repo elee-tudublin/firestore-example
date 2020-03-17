@@ -10,7 +10,7 @@ const msgDelimiter = ',';
 
 const subTopic = 'messageapp/#';
 
-const testTopic = 'messageapp/sender/createdAt/subject/message';
+const defaultDestinationTopic = 'messageapp/sender/createdAt/subject/message';
 
 // moment used to generate date 
 const testMessage = `me@me.com${msgDelimiter}${moment().format('llll').replace(/,/g, ' ')}${msgDelimiter}subject${msgDelimiter}message`;
@@ -39,13 +39,14 @@ function MQTTconnect() {
 function onConnect() {
   // Once a connection has been made, make a subscription and send a message.
 
-  console.log('Connected');
   mqtt.subscribe(subTopic);
 
   // send a test message
   message = new Paho.MQTT.Message(testMessage);
-  message.destinationName = defaultTopic;
+  message.destinationName = defaultDestinationTopic;
   mqtt.send(message);
+
+  console.log('Connected');
 }
 
 // Handle errors
