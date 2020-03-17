@@ -30,7 +30,7 @@ async function displayMessages(messages) {
           <td>${msg.id}</td>
           <td>${msg.data().createdAt}</td>
           <td>${msg.data().sender}</td>
-          <td>${msg.data().recipient}</td>
+          <td>${msg.data().subject}</td>
           <td>${msg.data().message}</td>
           <td>
             <button class="btn btn-xs" onclick="deleteMessage('${msg.id}')"><span class="oi oi-trash"></span></button>
