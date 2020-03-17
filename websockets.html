@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Messages from FireStore Example</title>
+</head>
+
+<body>
+
+    <!-- Navigation bar-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Start Bootstrap</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="loginLink" class="nav-link" href="#">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav> <!-- end Nav bar -->
+
+    <!-- Container for page content-->
+    <div class="container">
+        <div class="row">
+            <h2 class="mt-5">Message List</h2>
+        </div>
+        <!-- content row-->
+        <div class="row">
+            <!-- left column-->
+            <div class="col-sm-2">
+                <div id="categoryList" class="list-group">
+                    <a href="#" class="list-group-item list-group-item-action">First item</a>
+                    <a href="#" class="list-group-item list-group-item-action">Second item</a>
+                    <a href="#" class="list-group-item list-group-item-action">Third item</a>
+                </div>
+            </div> <!-- end left col-->
+            <!-- Right column -->
+            <div class="col-sm-10">
+                <h3>Send a message</h3>
+                <div id="messageForm">
+                    <form id="sendMessage" onsubmit="return sendMessage()">
+                        <div class="form-group">
+                            <label for="topic">Topic</label>
+                            <input type="text" class="form-control" id="topic" placeholder="messageapp/sender/createdAt/subject/message" value="messageapp/sender/createdAt/subject/message">
+                          </div>
+                        <div class="form-group">
+                          <label for="sender">From</label>
+                          <input type="text" class="form-control" id="sender" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient">Subject</label>
+                            <input type="text" class="form-control" id="subject" placeholder="Subject">
+                          </div>
+                          <div class="form-group">
+                            <label for="message">Enter Message</label>
+                            <textarea class="form-control" id="messageText" rows="3"></textarea>
+                          </div>
+                        <button type="submit" class="btn btn-primary">Send</button>
+                      </form>
+                </div>
+                <div id="messages" class="mt-5">
+                    <h3>Message List</h3>
+                    <ul id="messageList" class="list-group mb-5">
+                    </ul>
+                </div>
+            </div> <!-- end right col-->
+        </div> <!-- end content row -->
+    </div> <!-- end container-->
+
+
+    <!-- Load CSS + JavaScript at end of page body -->
+
+    <!-- Load site CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Load BootStrap 4 CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Load open-iconic (fonts, icons, etc.) -->
+    <link rel="stylesheet" href="css/open-iconic/css/open-iconic-bootstrap.min.css">
+
+
+    <!-- BootStrap 4 JavaScript Dependencies  -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.js" type="text/javascript"></script>
+
+    <!-- Moment Library for date + time functions-->
+    <script src="https://momentjs.com/downloads/moment-with-locales.js"></script>
+    <script src="./javascript/mqtt/websockets.js"></script>
+
+</body>
+
+</html>
