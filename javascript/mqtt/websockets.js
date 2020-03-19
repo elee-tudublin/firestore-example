@@ -1,3 +1,7 @@
+// Based on Paho MQTT Websocket examples for JavaScript
+// https://github.com/eclipse/paho.mqtt.javascript
+
+
 // var for mqqt object instance
 let mqtt;
 const reconnectTimeout = 2000;
