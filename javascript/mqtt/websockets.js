@@ -5,10 +5,14 @@
 // var for mqqt object instance
 let mqtt;
 const reconnectTimeout = 2000;
-// Websocket host
-const host = 'broker.hivemq.com';
-// Websocket port
-const port = 8000;
+// Websocket host + port
+/*
+  broker.hivemq.com uses port 8000 - no tls
+*/
+const host = 'mqtt.eclipse.org';
+const port = 443;
+
+
 // Message delimiter char
 const msgDelimiter = ',';
 
@@ -32,7 +36,8 @@ function MQTTconnect() {
   const options = {
     timeout: 3,
     onSuccess: onConnect,
-    onFailure: onFailure
+    onFailure: onFailure,
+    useSSL: true
   };
   mqtt.onMessageArrived = onMessageArrived;
 
