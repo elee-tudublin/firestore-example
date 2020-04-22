@@ -9,8 +9,8 @@ const reconnectTimeout = 2000;
 /*
   broker.hivemq.com uses port 8000 - no tls
 */
-const host = 'mqtt.eclipse.org';
-const port = 443;
+const host = 'test.mosquitto.org';
+const port = 8081;
 
 
 // Message delimiter char
